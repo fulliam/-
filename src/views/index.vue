@@ -1,5 +1,5 @@
 <template>
-  <SideMenu />
+  <NavMenu />
 
   <div style="position: relative;">
     <section id="section1">
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import ChangeFontAndImage from '@/components/UI/AnimatedText/ChangeFontAndImage.vue';
-import SideMenu from '@/components/partials/SideMenu/SideMenu.vue';
+import NavMenu from '@/components/partials/NavMenu/NavMenu.vue';
 import About from '@/components/templates/About.vue';
 import DavidHead from '@/components/partials/3D/DavidHead.vue';
 </script>
