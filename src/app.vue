@@ -10,9 +10,6 @@
 
 </script>
 
-<style scoped lang="scss">
-// @import './assets/styles/index.scss';
+<style lang="scss">
 @import '/src/assets/styles/index.scss';
-// @import '@/assets/styles/index.scss';
-
 </style>

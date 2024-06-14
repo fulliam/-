@@ -1,21 +1,38 @@
 <template>
   <nav>
     <ul>
-      <li v-for="icon in icons" :key="icon" class="glassIco">
-        {{ icon }}
+      <li
+        v-for="(icon, index) in icons"
+        :key="icon"
+        class="glassIco"
+        @click="handleEmit(index)"
+      >
+        <GlitchText>
+          {{ icon }}
+        </GlitchText>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import GlitchText from '@/components/UI/AnimatedText/GlitchText.vue';
+
 const icons = ref([
-  'icon',
-  'icon',
-  'icon',
-  'icon',
-  'icon'
+  '␥',
+  '᭡',
+  'ᝰ.ᐟ',
+  'ᝰ.ᐟ',
+  'ᝰ.ᐟ'
 ]);
+
+const emit = defineEmits<{
+  changeAction: [value: number];
+}>();
+
+const handleEmit = (index: number) => {
+  emit('changeAction', index);
+};
 </script>
 
 <style scoped lang="scss">
@@ -28,6 +45,7 @@ nav {
   transition: background-color 0.2s, box-shadow 0.2s;
   width: 100%;
   z-index: 100;
+  padding: 16px;
 
   ul {
     list-style: none;
@@ -38,12 +56,11 @@ nav {
 
 .glassIco {
   --height: 72px;
-  --width: 172px;
+  --width: 72px;
   &, & * { box-sizing: border-box; transition: 200ms; }
   width: var(--width);
   height: var(--height);
-  color: #fff;
-  font-size: 30px;
+  white-space: nowrap;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(2px);
@@ -55,6 +72,7 @@ nav {
   overflow: hidden;
   cursor: pointer;
   @include flex-center;
+  @include AngryFont(400, 42, $green);
 
   &:before {
     content: "";

@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h1>
+    <h1 class="untouch">
       {{ props.text }}
     </h1>
   </article>
@@ -21,9 +21,9 @@ article {
   justify-content: center;
   align-items: center;
   box-shadow: inset 0 0 30px black;
-  // background-image: url('/images/wall.jpg');
+  background-image: url('/images/wall.jpg');
   // background-image: url('/images/walltexture.jpeg');
-  background-image: url('/images/concretewall.png');
+  // background-image: url('/images/concretewall.png');
 }
 
 @keyframes changeFontAndImage {
@@ -71,7 +71,7 @@ article {
 }
 
 h1 {
-  animation: changeFontAndImage 3s infinite;
+  animation: changeFontAndImage 7s infinite;
   width: auto;
   font-size: 250px;
   color: white;
@@ -83,13 +83,14 @@ h1 {
   justify-content: center;
   display: flex;
   align-items: center;
-
+  transition: all .3s;
   // filter: drop-shadow(10px 20px black);
+  filter: blur(0.3px);
 
   &:before,
   &:after {
     content: "";
-    background-size: contain;
+    background-size: cover;
     transform: rotate(-90deg);
   }
 }
