@@ -15,58 +15,52 @@
   </div>
 
   <div
-    class="code"
+    class="code glass-wrapper"
     :class="showCode ? 'slide-in-right' : 'slide-out-right'"
   >
-    <pre class="glass-wrapper">
-      <code class="javascript" style="background: transparent;">
-
-      </code>
-    </pre>
+    <CodeHighlighter :code="samplePythonCode" language="python" />
   </div>
-
-  <DragWindow>
-    <div class="glass-wrapper">
-      HELOOO
-    </div>
-  </DragWindow>
-
-  <DragContainer
-    v-for="container in containerData"
-    :key="container.id"
-    :initial-x="container.initialX"
-    :initial-y="container.initialY"
-    :z-index="container.zIndex"
-    :width="container.width"
-    :height="container.height"
-    @selectContainer="selectContainer(container.id)"
-    @contextmenu="showContextMenu($event, container.id)"
-  >
-    <div
-      v-if="showMenu && container.id === selectedContainerId"
-      class="context-menu"
-    >
-      <button class="button-85" style="width: 90px; --bg: #be4d4d;" @click="deleteContainer(container.id)">Del</button>
-    </div>
-    <ul>
-      <li>
-        id: {{ container.id }}
-      </li>
-      <li>
-        initialY: {{ container.initialY }}
-      </li>
-      <li>
-        initialY: {{ container.initialY }}
-      </li>
-      <li>
-        zIndex: {{ container.zIndex }}
-      </li>
-    </ul>
-  </DragContainer>
 
   <div style="position: relative;">
     <section id="section1">
       <ChangeFontAndImage :text="'fu11i@m'" />
+
+      <DragContainer
+        v-if="showDragWindow"
+        :initial-x="dragContainerX"
+        :initial-y="dragContainerY"
+        :max-width="dragContainerMaxWidth"
+        :max-height="dragContainerMaxHeight"
+      >
+        <div
+          class="drag-window glass-wrapper"
+          :style="{
+            width: `${dragWindowWidth}`,
+            height: `${dragWindowHeight}`,
+            maxHeight: `${dragContainerMaxHeight}`,
+            maxWidth: `${dragContainerMaxWidth}`,
+            borderRadius: dragWindowIsFullscreen ? '0' : '16px'
+          }"
+        >
+          <div class="traffic-lights">
+            <button
+              class="traffic-light traffic-light-close"
+              @click="showDragWindow = false"
+            ></button>
+            <button
+              class="traffic-light traffic-light-minimize"
+              @click="handleResizeDragWindow('min')"
+            ></button>
+            <button
+              class="traffic-light traffic-light-maximize"
+              @click="handleResizeDragWindow('max')"
+            ></button>
+          </div>
+          <p>
+            "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+          </p>
+        </div>
+      </DragContainer>
     </section>
     <section id="section2">
       <About />
@@ -96,15 +90,15 @@ import About from '@/components/templates/About.vue';
 import DavidHead from '@/components/partials/3D/DavidHead.vue';
 import MusicSpectogramm from '@/components/partials/MusicWidget/MusicSpectrogramm.vue';
 import RotateCarousel from '@/components/partials/Carousel/RotateCarousel.vue';
-import DragWindow from '@/components/partials/Drag/DragWindow.vue';
 import DragContainer from '@/components/partials/Drag/DragContainer.vue';
+import CodeHighlighter from '@/components/UI/AnimatedText/CodeHighLighter.vue';
 
 const showMusic = ref<boolean>(false);
 const showCode = ref<boolean>(false);
 const showDragWindow = ref<boolean>(false);
 
 let lastClickTime = 0;
-const debounceTime = 500;
+const debounceTime = 500; // animation speed in scss
 let currentTime = Date.now();
 
 const handleChangeAction = (index: number) => {
@@ -126,91 +120,66 @@ const handleChangeAction = (index: number) => {
       showDragWindow.value = true;
     }
     if (index === 3) {
-      // Действия при индексе 2
+      // any
     }
     if (index === 4) {
-      // Действия при индексе 2
+      // any
     }
   }
 };
 
-const containerData = ref([
-  {
-    id: 1,
-    initialX: 100,
-    initialY: 500,
-    zIndex: 110,
-    width: 100,
-    height: 100
-  },
-  {
-    id: 2,
-    initialX: 200,
-    initialY: 500,
-    zIndex: 110,
-    width: 100,
-    height: 100
-  },
-  {
-    id: 3,
-    initialX: 300,
-    initialY: 500,
-    zIndex: 110,
-    width: 100,
-    height: 100
+const dragContainerX = ref<number>(50);
+const dragContainerY = ref<number>(700);
+
+const dragContainerMaxWidth = ref<string>('500px');
+const dragContainerMaxHeight = ref<string>('500px');
+
+const dragWindowWidth = ref<string>('100%');
+const dragWindowHeight = ref<string>('100%');
+const dragWindowIsFullscreen = ref<boolean>(false);
+
+const handleResizeDragWindow = (param: string) => {
+  if (param === 'max') {
+    dragContainerMaxWidth.value = '100vw';
+    dragContainerMaxHeight.value = '100vh';
+    dragContainerX.value = 0;
+    dragContainerY.value = 104;
+    dragWindowWidth.value = '100vw';
+    dragWindowHeight.value = '100vh';
+    dragWindowIsFullscreen.value = true;
   }
-]);
-
-let maxZIndex = 2;
-let showMenu = ref(false);
-let selectedContainerId = ref<number | null>(null);
-// let nextContainerId = ref(4);
-
-const selectContainer = (id: number) => {
-  const container = containerData.value.find((c: any) => c.id === id);
-  if (container) {
-    container.zIndex = maxZIndex + 1;
-    maxZIndex += 1;
-    selectedContainerId.value = id;
+  if (param === 'min') {
+    dragContainerMaxWidth.value = '500px';
+    dragContainerMaxHeight.value = '500px';
+    dragContainerX.value = 300;
+    dragContainerY.value = 500;
+    dragWindowWidth.value = '100%';
+    dragWindowHeight.value = '100%';
+    dragWindowIsFullscreen.value = false;
   }
 };
 
-const showContextMenu = (event: MouseEvent, id: number) => {
-  event.preventDefault();
-  showMenu.value = true;
-  selectedContainerId.value = id;
+const samplePythonCode = `
+import asyncio
 
-  window.addEventListener('click', hideContextMenu);
-  window.addEventListener('keyup', hideContextMenu);
-};
+class AsyncJokeTeller:
+    def __init__(self, name):
+        self.name = name
 
-const hideContextMenu = () => {
-  showMenu.value = false;
-  window.removeEventListener('click', hideContextMenu);
-  window.removeEventListener('keyup', hideContextMenu);
-};
+    async def tell_joke(self):
+        print(f"Hello, I'm {self.name} and I'm going to tell you a joke!")
+        await asyncio.sleep(1)
+        print("Why don't scientists trust atoms?")
+        await asyncio.sleep(2)
+        print("Because they make up everything! 😂")
+    
+    async def main(self):
+        await self.tell_joke()
 
-const deleteContainer = (id: number) => {
-  const index = containerData.value.findIndex((c: any) => c.id === id);
-  if (index !== -1) {
-    containerData.value.splice(index, 1);
-    if (id === selectedContainerId.value) {
-      selectedContainerId.value = null;
-    }
-  }
-};
-
-// const addContainer = () => {
-//   containerData.value.push({
-//     id: nextContainerId.value,
-//     initialX: 100,
-//     initialY: 0,
-//     zIndex: 0,
-//     width: 100,
-//     height: 100
-//   });
-//   nextContainerId.value += 1;
-// };
+if __name__ == "__main__":
+    joke_teller = AsyncJokeTeller("ChatGPT")
+    asyncio.run(joke_teller.main())
+`;
 </script>
 
 <style scoped lang="scss">
@@ -267,7 +236,7 @@ section {
 .music-widget {
   position: fixed;
   right: 0;
-  top: 8px;
+  top: 150px;
   border-radius: 16px 0 0 16px;
   z-index: 109;
   color: white;
@@ -318,14 +287,7 @@ section {
   z-index: 99;
   bottom: 30px;
   right: 0;
-
-  pre {
-    border-radius: 24px 0 0 24px;
-
-    code {
-      font-size: 12px;
-    }
-  }
+  border-radius: 24px 0 0 24px;
 }
 
 .slide-in-right {
@@ -351,6 +313,132 @@ section {
   }
   100% {
     transform: translate(100%);
+  }
+}
+
+.drag-window {
+  overflow: scroll;
+
+  p {
+    margin: 10px;
+    margin-top: 20px;
+    @include HiveheadHandwriting(500, 14, $white);
+  }
+
+  .traffic-lights {
+    position: absolute;
+    top: 2px;
+    left: 11px;
+
+    .focus &, &:hover, &:active {
+        > .traffic-light-close {
+            background-color: $close-red;
+
+            &:active:hover {
+                background-color: $close-red-active;
+            }
+        }
+        > .traffic-light-minimize {
+            background-color: $minimize-yellow;
+
+            &:active:hover {
+                background-color: $minimize-yellow-active;
+            }
+        }
+        > .traffic-light-maximize {
+            background-color: $maximize-green;
+
+            &:active:hover {
+                background-color: $maximize-green-active;
+            }
+        }
+    }
+
+    > .traffic-light {
+        &:before, &:after {
+            visibility: hidden;
+        }
+    }
+
+    &:hover, &:active {
+        > .traffic-light {
+            &:before, &:after {
+                visibility: visible;
+            }
+        }
+    }
+  }
+
+  .traffic-light {
+    border-radius: 100%;
+    padding: 0;
+    height: 12px;
+    width: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    margin-right: 3.5px;
+    background-color: $disabled-gray;
+    position: relative;
+    outline: none;
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-radius: 1px;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    &-close {
+        &:before, &:after {
+            background-color: $close-red-icon;
+            width: 8px;
+            height: 1px;
+        }
+        &:before {
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+        &:active:hover:before, &:active:hover:after {
+            background-color: $close-red-icon-active;
+        }
+    }
+
+    &-minimize {
+        &:before {
+            background-color: $minimize-yellow-icon;
+            width: 8px;
+            height: 1px;
+        }
+        &:active:hover:before {
+            background-color: $minimize-yellow-icon-active;
+        }
+    }
+
+    &-maximize {
+        &:before {
+            background-color: $maximize-green-icon;
+            width: 6px;
+            height: 6px;
+        }
+        &:after {
+            background-color: $maximize-green;
+            width: 10px;
+            height: 2px;
+            transform: rotate(45deg);
+        }
+        &:active:hover:before {
+            background-color: $maximize-green-icon-active;
+        }
+        &:active:hover:after {
+            background-color: $maximize-green-active;
+        }
+    }
   }
 }
 </style>

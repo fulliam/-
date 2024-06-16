@@ -18,6 +18,7 @@
     "@vueuse/head": "^2.0.0",
     "axios": "^1.6.8",
     "pinia": "2.0.22",
+    "prismjs": "^1.29.0",
     "three": "^0.165.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
@@ -26,6 +27,7 @@
     "@rollup/plugin-alias": "^4.0.3",
     "@rollup/plugin-replace": "^5.0.2",
     "@types/node": "^14.18.36",
+    "@types/prismjs": "^1.26.4",
     "@types/three": "^0.165.0",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",

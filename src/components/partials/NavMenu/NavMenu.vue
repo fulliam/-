@@ -21,6 +21,7 @@ import GlitchText from '@/components/UI/AnimatedText/GlitchText.vue';
 const icons = ref([
   '␥',
   '᭡',
+  '‮',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ'

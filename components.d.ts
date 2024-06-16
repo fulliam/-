@@ -22,6 +22,8 @@ declare module '@vue/runtime-core' {
     UIAnimatedIconGlitchText: typeof import('./src/components/UI/AnimatedIcon/GlitchText.vue')['default']
     UIAnimatedTextChangeFontAndImage: typeof import('./src/components/UI/AnimatedText/ChangeFontAndImage.vue')['default']
     UIAnimatedTextChengeRandomLetter: typeof import('./src/components/UI/AnimatedText/ChengeRandomLetter.vue')['default']
+    UIAnimatedTextCodeHighlighter: typeof import('./src/components/UI/AnimatedText/CodeHighLighter.vue')['default']
+    UIAnimatedTextCodeHighLighter: typeof import('./src/components/UI/AnimatedText/CodeHighLighter.vue')['default']
     UIAnimatedTextGlitchText: typeof import('./src/components/UI/AnimatedText/GlitchText.vue')['default']
   }
 }
