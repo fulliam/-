@@ -30,16 +30,15 @@ const props = defineProps<{
 
 const characters = ref<Char[]>([]);
 
-// Создаем объект цветов для элементов таблицы Менделеева
 const elementColors: Record<string, string> = {
-  'H': 'rgba(255, 102, 99, 0.4)',
-  'He': 'rgba(255, 222, 0, 0.3)',
-  'Li': 'rgba(204, 121, 167, 0.4)',
-  'Be': 'rgba(183, 159, 0, 0.3)',
-  'B': 'rgba(51, 204, 204, 0.4)',
-  'C': 'rgba(128, 128, 128, 0.3)',
-  'N': 'rgba(75, 0, 130, 0.4)',
-  'O': 'rgba(255, 165, 0, 0.3)'
+  'H': 'rgba(255, 69, 0, 0.8)', // Оранжевый красный
+  'He': 'rgba(255, 215, 0, 0.8)', // Золотой
+  'Li': 'rgba(0, 191, 255, 0.8)', // Глубокий небесно-голубой
+  'Be': 'rgba(124, 252, 0, 0.8)', // Луговой зеленый
+  'B': 'rgba(138, 43, 226, 0.8)', // Синий аметист
+  'C': 'rgba(255, 20, 147, 0.8)', // Розовый
+  'N': 'rgba(0, 255, 127, 0.8)', // Весенний зеленый
+  'O': 'rgba(255, 105, 180, 0.8)' // Горячий розовый
 };
 
 const getRandomElementColor = () => {
@@ -48,24 +47,30 @@ const getRandomElementColor = () => {
   return elementColors[randomElement];
 };
 
+const dictionary = '﷼≭＄∅⊓〄εζωのG.CM,d:?nce!TyB)TYBZ!r}0DBxZb(V{?//kJ#+8Wdt=*;c04q([{%:BeT*2';
+
+const getRandomChar = () => {
+  const randomIndex = Math.floor(Math.random() * dictionary.length);
+  return dictionary[randomIndex];
+};
+
 onMounted(() => {
   const textArray = props.text.split('');
   textArray.forEach(() => {
     characters.value.push({
-      value: '0',
+      value: getRandomChar(),
       isNbr: true,
       dataNumber: 0,
-      dataChange: Math.round(Math.random() * 60),
+      dataChange: Math.round(Math.random() * 15),
       backgroundColor: ''
     });
   });
 
-  const randomNbr = () => Math.round(Math.random() * 9);
   const randomIndex = () => Math.floor(Math.random() * characters.value.length);
 
   const setValue = () => {
     const randomCharIndex = randomIndex();
-    characters.value[randomCharIndex].value = randomNbr().toString();
+    characters.value[randomCharIndex].value = getRandomChar();
     characters.value[randomCharIndex].dataNumber += 1;
 
     characters.value.forEach((char, index) => {
@@ -75,7 +80,6 @@ onMounted(() => {
       }
     });
 
-    // Применяем случайные цвета к фону
     characters.value.forEach((char) => {
       if (!char.isNbr && !char.backgroundColor) {
         char.backgroundColor = getRandomElementColor();

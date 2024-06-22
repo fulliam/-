@@ -21,6 +21,14 @@
     <CodeHighlighter :code="samplePythonCode" language="python" />
   </div>
 
+  <div
+    class="calendar glass-wrapper"
+    :class="showCalendar ? 'slide-in-left' : 'slide-out-left'"
+  >
+    <!-- <Calendar /> -->
+    <ColorPicker />
+  </div>
+
   <div style="position: relative;">
     <section id="section1">
       <ChangeFontAndImage :text="'fu11i@m'" />
@@ -87,14 +95,21 @@
 import ChangeFontAndImage from '@/components/UI/AnimatedText/ChangeFontAndImage.vue';
 import NavMenu from '@/components/partials/NavMenu/NavMenu.vue';
 import About from '@/components/templates/About.vue';
+// import Calendar from '@/components/templates/Calendar.vue';
 import DavidHead from '@/components/partials/3D/DavidHead.vue';
 import MusicSpectogramm from '@/components/partials/MusicWidget/MusicSpectrogramm.vue';
 import RotateCarousel from '@/components/partials/Carousel/RotateCarousel.vue';
 import DragContainer from '@/components/partials/Drag/DragContainer.vue';
 import CodeHighlighter from '@/components/UI/AnimatedText/CodeHighLighter.vue';
+import ColorPicker from '@/components/partials/ThemeColorSettings/ColorPicker.vue';
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const showMusic = ref<boolean>(false);
 const showCode = ref<boolean>(false);
+const showCalendar = ref<boolean>(false);
 const showDragWindow = ref<boolean>(false);
 
 let lastClickTime = 0;
@@ -120,7 +135,8 @@ const handleChangeAction = (index: number) => {
       showDragWindow.value = true;
     }
     if (index === 3) {
-      // any
+      lastClickTime = Date.now();
+      showCalendar.value = !showCalendar.value;
     }
     if (index === 4) {
       // any
@@ -128,8 +144,8 @@ const handleChangeAction = (index: number) => {
   }
 };
 
-const dragContainerX = ref<number>(50);
-const dragContainerY = ref<number>(700);
+const dragContainerX = ref<number>(500);
+const dragContainerY = ref<number>(500);
 
 const dragContainerMaxWidth = ref<string>('500px');
 const dragContainerMaxHeight = ref<string>('500px');
@@ -180,6 +196,43 @@ if __name__ == "__main__":
     joke_teller = AsyncJokeTeller("ChatGPT")
     asyncio.run(joke_teller.main())
 `;
+
+const sections = ref([]);
+const currentSectionIndex = ref(0);
+
+const handleWheel = (event) => {
+  event.preventDefault();
+  if (event.deltaY < 0 && currentSectionIndex.value > 0) {
+    // Scroll up
+    currentSectionIndex.value--;
+    scrollToSection(sections.value[currentSectionIndex.value], 'up');
+  } else if (event.deltaY > 0 && currentSectionIndex.value < sections.value.length - 1) {
+    // Scroll down
+    currentSectionIndex.value++;
+    scrollToSection(sections.value[currentSectionIndex.value], 'down');
+  }
+};
+
+const scrollToSection = (section, direction) => {
+  if (section) {
+    const yOffset = direction === 'up' ? -window.innerHeight : 0;
+    gsap.to(window, { scrollTo: { y: section.offsetTop + yOffset, autoKill: false }, duration: 1 });
+  }
+};
+
+onMounted(() => {
+  sections.value = [
+    document.getElementById('section1'),
+    document.getElementById('section2'),
+    document.getElementById('section3'),
+    document.getElementById('section4')
+  ];
+  window.addEventListener('wheel', handleWheel);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('wheel', handleWheel);
+});
 </script>
 
 <style scoped lang="scss">
@@ -199,7 +252,7 @@ section {
   height: calc(100vh - 104px);
 
   z-index: 2;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--section-bg-color);;
   backdrop-filter: blur(2px);
 
   display: flex;
@@ -230,7 +283,7 @@ section {
 
 .glass-wrapper {
   padding: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--section-bg-color);;
 }
 
 .music-widget {
@@ -290,12 +343,29 @@ section {
   border-radius: 24px 0 0 24px;
 }
 
+.calendar {
+  position: fixed;
+  z-index: 99;
+  height: 500px;
+  bottom: 30px;
+  left: 0;
+  border-radius: 0 24px 24px 0;
+}
+
 .slide-in-right {
   animation: slide-in-right .5s linear forwards;
 }
 
 .slide-out-right {
   animation: slide-out-right .5s linear forwards;
+}
+
+.slide-in-left {
+  animation: slide-in-left .5s linear forwards;
+}
+
+.slide-out-left {
+  animation: slide-out-left .5s linear forwards;
 }
 
 @keyframes slide-in-right {
@@ -313,6 +383,24 @@ section {
   }
   100% {
     transform: translate(100%);
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translate(0%);
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translate(0%);
+  }
+  100% {
+    transform: translate(-100%);
   }
 }
 

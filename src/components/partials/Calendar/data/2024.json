@@ -1,0 +1,1470 @@
+{
+  "январь": [
+      {
+          "day": 1,
+          "type": "holiday"
+      },
+      {
+          "day": 2,
+          "type": "holiday"
+      },
+      {
+          "day": 3,
+          "type": "holiday"
+      },
+      {
+          "day": 4,
+          "type": "holiday"
+      },
+      {
+          "day": 5,
+          "type": "holiday"
+      },
+      {
+          "day": 6,
+          "type": "weekend"
+      },
+      {
+          "day": 7,
+          "type": "weekend"
+      },
+      {
+          "day": 8,
+          "type": "holiday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "weekend"
+      },
+      {
+          "day": 14,
+          "type": "weekend"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "weekend"
+      },
+      {
+          "day": 21,
+          "type": "weekend"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "weekend"
+      },
+      {
+          "day": 28,
+          "type": "weekend"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      },
+      {
+          "day": 31,
+          "type": "workday"
+      }
+  ],
+  "февраль": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "weekend"
+      },
+      {
+          "day": 4,
+          "type": "weekend"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "weekend"
+      },
+      {
+          "day": 11,
+          "type": "weekend"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "weekend"
+      },
+      {
+          "day": 18,
+          "type": "weekend"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "holiday"
+      },
+      {
+          "day": 24,
+          "type": "weekend"
+      },
+      {
+          "day": 25,
+          "type": "weekend"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      }
+  ],
+  "март": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "weekend"
+      },
+      {
+          "day": 3,
+          "type": "weekend"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "holiday"
+      },
+      {
+          "day": 9,
+          "type": "weekend"
+      },
+      {
+          "day": 10,
+          "type": "weekend"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "weekend"
+      },
+      {
+          "day": 17,
+          "type": "weekend"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "weekend"
+      },
+      {
+          "day": 24,
+          "type": "weekend"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "weekend"
+      },
+      {
+          "day": 31,
+          "type": "weekend"
+      }
+  ],
+  "апрель": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "weekend"
+      },
+      {
+          "day": 7,
+          "type": "weekend"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "weekend"
+      },
+      {
+          "day": 14,
+          "type": "weekend"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "weekend"
+      },
+      {
+          "day": 21,
+          "type": "weekend"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "weekend"
+      },
+      {
+          "day": 29,
+          "type": "holiday"
+      },
+      {
+          "day": 30,
+          "type": "holiday"
+      }
+  ],
+  "май": [
+      {
+          "day": 1,
+          "type": "holiday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "weekend"
+      },
+      {
+          "day": 5,
+          "type": "weekend"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "holiday"
+      },
+      {
+          "day": 10,
+          "type": "holiday"
+      },
+      {
+          "day": 11,
+          "type": "weekend"
+      },
+      {
+          "day": 12,
+          "type": "weekend"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "weekend"
+      },
+      {
+          "day": 19,
+          "type": "weekend"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "weekend"
+      },
+      {
+          "day": 26,
+          "type": "weekend"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      },
+      {
+          "day": 31,
+          "type": "workday"
+      }
+  ],
+  "июнь": [
+      {
+          "day": 1,
+          "type": "weekend"
+      },
+      {
+          "day": 2,
+          "type": "weekend"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "weekend"
+      },
+      {
+          "day": 9,
+          "type": "weekend"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "holiday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "weekend"
+      },
+      {
+          "day": 16,
+          "type": "weekend"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "weekend"
+      },
+      {
+          "day": 23,
+          "type": "weekend"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "weekend"
+      },
+      {
+          "day": 30,
+          "type": "weekend"
+      }
+  ],
+  "июль": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "weekend"
+      },
+      {
+          "day": 7,
+          "type": "weekend"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "weekend"
+      },
+      {
+          "day": 14,
+          "type": "weekend"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "weekend"
+      },
+      {
+          "day": 21,
+          "type": "weekend"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "weekend"
+      },
+      {
+          "day": 28,
+          "type": "weekend"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      },
+      {
+          "day": 31,
+          "type": "workday"
+      }
+  ],
+  "август": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "weekend"
+      },
+      {
+          "day": 4,
+          "type": "weekend"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "weekend"
+      },
+      {
+          "day": 11,
+          "type": "weekend"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "weekend"
+      },
+      {
+          "day": 18,
+          "type": "weekend"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "weekend"
+      },
+      {
+          "day": 25,
+          "type": "weekend"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      },
+      {
+          "day": 31,
+          "type": "weekend"
+      }
+  ],
+  "сентябрь": [
+      {
+          "day": 1,
+          "type": "weekend"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "weekend"
+      },
+      {
+          "day": 8,
+          "type": "weekend"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "weekend"
+      },
+      {
+          "day": 15,
+          "type": "weekend"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "weekend"
+      },
+      {
+          "day": 22,
+          "type": "weekend"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "weekend"
+      },
+      {
+          "day": 29,
+          "type": "weekend"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      }
+  ],
+  "октябрь": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "weekend"
+      },
+      {
+          "day": 6,
+          "type": "weekend"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "weekend"
+      },
+      {
+          "day": 13,
+          "type": "weekend"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "weekend"
+      },
+      {
+          "day": 20,
+          "type": "weekend"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "weekend"
+      },
+      {
+          "day": 27,
+          "type": "weekend"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "workday"
+      },
+      {
+          "day": 31,
+          "type": "workday"
+      }
+  ],
+  "ноябрь": [
+      {
+          "day": 1,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "weekend"
+      },
+      {
+          "day": 4,
+          "type": "holiday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "workday"
+      },
+      {
+          "day": 8,
+          "type": "workday"
+      },
+      {
+          "day": 9,
+          "type": "weekend"
+      },
+      {
+          "day": 10,
+          "type": "weekend"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "workday"
+      },
+      {
+          "day": 15,
+          "type": "workday"
+      },
+      {
+          "day": 16,
+          "type": "weekend"
+      },
+      {
+          "day": 17,
+          "type": "weekend"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "workday"
+      },
+      {
+          "day": 22,
+          "type": "workday"
+      },
+      {
+          "day": 23,
+          "type": "weekend"
+      },
+      {
+          "day": 24,
+          "type": "weekend"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "workday"
+      },
+      {
+          "day": 29,
+          "type": "workday"
+      },
+      {
+          "day": 30,
+          "type": "weekend"
+      }
+  ],
+  "декабрь": [
+      {
+          "day": 1,
+          "type": "weekend"
+      },
+      {
+          "day": 2,
+          "type": "workday"
+      },
+      {
+          "day": 3,
+          "type": "workday"
+      },
+      {
+          "day": 4,
+          "type": "workday"
+      },
+      {
+          "day": 5,
+          "type": "workday"
+      },
+      {
+          "day": 6,
+          "type": "workday"
+      },
+      {
+          "day": 7,
+          "type": "weekend"
+      },
+      {
+          "day": 8,
+          "type": "weekend"
+      },
+      {
+          "day": 9,
+          "type": "workday"
+      },
+      {
+          "day": 10,
+          "type": "workday"
+      },
+      {
+          "day": 11,
+          "type": "workday"
+      },
+      {
+          "day": 12,
+          "type": "workday"
+      },
+      {
+          "day": 13,
+          "type": "workday"
+      },
+      {
+          "day": 14,
+          "type": "weekend"
+      },
+      {
+          "day": 15,
+          "type": "weekend"
+      },
+      {
+          "day": 16,
+          "type": "workday"
+      },
+      {
+          "day": 17,
+          "type": "workday"
+      },
+      {
+          "day": 18,
+          "type": "workday"
+      },
+      {
+          "day": 19,
+          "type": "workday"
+      },
+      {
+          "day": 20,
+          "type": "workday"
+      },
+      {
+          "day": 21,
+          "type": "weekend"
+      },
+      {
+          "day": 22,
+          "type": "weekend"
+      },
+      {
+          "day": 23,
+          "type": "workday"
+      },
+      {
+          "day": 24,
+          "type": "workday"
+      },
+      {
+          "day": 25,
+          "type": "workday"
+      },
+      {
+          "day": 26,
+          "type": "workday"
+      },
+      {
+          "day": 27,
+          "type": "workday"
+      },
+      {
+          "day": 28,
+          "type": "work"
+      },
+      {
+          "day": 29,
+          "type": "weekend"
+      },
+      {
+          "day": 30,
+          "type": "holiday"
+      },
+      {
+          "day": 31,
+          "type": "holiday"
+      }
+  ]
+}

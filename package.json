@@ -17,6 +17,7 @@
     "@unhead/ssr": "^1.8.20",
     "@vueuse/head": "^2.0.0",
     "axios": "^1.6.8",
+    "gsap": "^3.12.5",
     "pinia": "2.0.22",
     "prismjs": "^1.29.0",
     "three": "^0.165.0",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^4.0.3",
     "@rollup/plugin-replace": "^5.0.2",
+    "@types/gsap": "^3.0.0",
     "@types/node": "^14.18.36",
     "@types/prismjs": "^1.26.4",
     "@types/three": "^0.165.0",

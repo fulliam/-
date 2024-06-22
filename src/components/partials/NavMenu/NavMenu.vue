@@ -1,5 +1,9 @@
 <template>
   <nav>
+    <h1>
+      <ChangeRandomLetter :text="'FULLIAM'" />
+    </h1>
+
     <ul>
       <li
         v-for="(icon, index) in icons"
@@ -17,11 +21,12 @@
 
 <script setup lang="ts">
 import GlitchText from '@/components/UI/AnimatedText/GlitchText.vue';
+import ChangeRandomLetter from '@/components/UI/AnimatedText/ChengeRandomLetter.vue';
 
 const icons = ref([
   '␥',
   '᭡',
-  '‮',
+  'の',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ'
@@ -47,6 +52,14 @@ nav {
   width: 100%;
   z-index: 100;
   padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    @include MixBit(500, 16px, $white)
+  }
 
   ul {
     list-style: none;
