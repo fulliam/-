@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
@@ -40,7 +39,8 @@ watch(() => props.code, () => {
 <style lang="scss" scoped>
 pre {
   overflow: auto;
-  background: transparent;
+  background: #1f1a1aeb;
+  border-radius: 20px 0 0 20px;
 }
 
 code {

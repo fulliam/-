@@ -5,7 +5,7 @@
       <p class="data-item">Выходных и праздников: <span>{{ calendarData.weekendsAndHolidays }}</span></p>
       <p class="data-item">Текущий месяц: <span>{{ calendarData.month }}</span></p>
     </div> -->
-    <div style="display: flex; gap: 20px; padding-bottom: 20px;">
+    <div style="display: flex; gap: 20px; padding-top: 20px;">
       <Calendar @calendarData="handleCalendarData" @showCalendarData="handleShowCalendarData" />
 
       <div v-if="calendarDataIsShow">

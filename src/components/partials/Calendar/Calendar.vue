@@ -154,7 +154,7 @@ onMounted(() => {
   // border: 1px solid #073e4d;
   border-radius: 10px;
   // background-color: #fff;
-  background: transparent;
+  background: #e5e5e5e5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .controls {

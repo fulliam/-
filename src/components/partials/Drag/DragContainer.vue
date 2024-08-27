@@ -1,16 +1,15 @@
 <template>
   <div
+    :id="containerId"
     ref="container"
     class="draggable"
     :style="{
-      top: `${initialY}px`,
-      left: `${initialX}px`,
+      top: `${position.y}px`,
+      left: `${position.x}px`,
       maxHeight: `${maxHeight}`,
       maxWidth: `${maxWidth}`
     }"
     @mousedown="startDrag"
-    @mousemove="onMouseMove"
-    @mouseup="endDrag"
   >
     <div class="content untouch focus">
       <slot></slot>
@@ -24,7 +23,11 @@ interface Position {
   y: number;
 }
 
-defineProps({
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  },
   initialX: {
     type: Number,
     default: 0
@@ -43,9 +46,14 @@ defineProps({
   }
 });
 
+const containerId = ref<string>(props.id);
 const container = ref<HTMLElement | null>(null);
 const isDragging = ref(false);
 const dragStartPos = ref<Position>({ x: 0, y: 0 });
+const position = reactive<Position>({
+  x: props.initialX,
+  y: props.initialY
+});
 
 const startDrag = (event: MouseEvent) => {
   isDragging.value = true;
@@ -53,28 +61,23 @@ const startDrag = (event: MouseEvent) => {
     x: event.clientX - (container.value?.offsetLeft || 0),
     y: event.clientY - (container.value?.offsetTop || 0)
   };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', endDrag);
 };
 
 const onMouseMove = (event: MouseEvent) => {
   if (isDragging.value && container.value) {
-    container.value.style.left = `${event.clientX - dragStartPos.value.x}px`;
-    container.value.style.top = `${event.clientY - dragStartPos.value.y}px`;
+    position.x = event.clientX - dragStartPos.value.x;
+    position.y = event.clientY - dragStartPos.value.y;
   }
 };
 
 const endDrag = () => {
   isDragging.value = false;
-};
-
-onMounted(() => {
-  document.addEventListener('mouseup', endDrag);
-  document.addEventListener('mousemove', onMouseMove);
-});
-
-onUnmounted(() => {
-  document.removeEventListener('mouseup', endDrag);
   document.removeEventListener('mousemove', onMouseMove);
-});
+  document.removeEventListener('mouseup', endDrag);
+};
 </script>
 
 <style lang="scss">

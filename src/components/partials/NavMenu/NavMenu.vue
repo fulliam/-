@@ -1,7 +1,7 @@
 <template>
   <nav>
     <h1>
-      <ChangeRandomLetter :text="'FULLIAM'" />
+      <!-- <ChangeRandomLetter :text="'FULLIAM'" /> -->
     </h1>
 
     <ul>
@@ -21,12 +21,13 @@
 
 <script setup lang="ts">
 import GlitchText from '@/components/UI/AnimatedText/GlitchText.vue';
-import ChangeRandomLetter from '@/components/UI/AnimatedText/ChengeRandomLetter.vue';
+// import ChangeRandomLetter from '@/components/UI/AnimatedText/ChengeRandomLetter.vue';
 
 const icons = ref([
   '␥',
   '᭡',
   'の',
+  'ᝰ.ᐟ',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ',
   'ᝰ.ᐟ'

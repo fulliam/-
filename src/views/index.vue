@@ -25,7 +25,6 @@
     class="calendar glass-wrapper"
     :class="showCalendar ? 'slide-in-left' : 'slide-out-left'"
   >
-    <!-- <Calendar /> -->
     <ColorPicker />
   </div>
 
@@ -33,8 +32,13 @@
     <section id="section1">
       <ChangeFontAndImage :text="'fu11i@m'" />
 
+      <div class="carousel">
+        <RotateCarousel />
+      </div>
+
       <DragContainer
         v-if="showDragWindow"
+        id="calendar-container"
         :initial-x="dragContainerX"
         :initial-y="dragContainerY"
         :max-width="dragContainerMaxWidth"
@@ -50,6 +54,7 @@
             borderRadius: dragWindowIsFullscreen ? '0' : '16px'
           }"
         >
+          <!-- TODO: move traffic lights to drag container (decompose) -->
           <div class="traffic-lights">
             <button
               class="traffic-light traffic-light-close"
@@ -64,58 +69,234 @@
               @click="handleResizeDragWindow('max')"
             ></button>
           </div>
-          <p>
-            "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
-          </p>
+
+          <Calendar />
+        </div>
+      </DragContainer>
+
+      <DragContainer
+        v-if="showGameWindow"
+        id="game-container"
+        :initial-x="dragContainerX"
+        :initial-y="dragContainerY"
+        :max-width="dragContainerMaxWidth"
+        :max-height="dragContainerMaxHeight"
+      >
+        <div
+          class="drag-window glass-wrapper game-viewer"
+          :style="{
+            width: `${dragWindowWidth}`,
+            height: `${dragWindowHeight}`,
+            maxHeight: `${dragContainerMaxHeight}`,
+            maxWidth: `${dragContainerMaxWidth}`,
+            borderRadius: dragWindowIsFullscreen ? '0' : '16px'
+          }"
+        >
+          <!-- TODO: move traffic lights to drag container (decompose) -->
+          <div class="traffic-lights">
+            <button
+              class="traffic-light traffic-light-close"
+              @click="showGameWindow = false"
+            ></button>
+            <button
+              class="traffic-light traffic-light-minimize"
+              @click="handleResizeDragWindow('min')"
+            ></button>
+            <button
+              class="traffic-light traffic-light-maximize"
+              @click="handleResizeDragWindow('max')"
+            ></button>
+          </div>
+
+          <iframe
+            id="tapocheck"
+            title="Betha test"
+            width="100%"
+            height="100%"
+            src="https://fulliam.github.io/tapocheck"
+          >
+          </iframe>
+        </div>
+      </DragContainer>
+
+      <DragContainer
+        v-show="showObjWindow"
+        id="game-container"
+        :initial-x="dragContainerX"
+        :initial-y="dragContainerY"
+        :max-width="dragContainerMaxWidth"
+        :max-height="dragContainerMaxHeight"
+      >
+        <div
+          class="drag-window glass-wrapper object-view"
+          :style="{
+            width: `${dragWindowWidth}`,
+            height: `${dragWindowHeight}`,
+            maxHeight: `${dragContainerMaxHeight}`,
+            maxWidth: `${dragContainerMaxWidth}`,
+            borderRadius: dragWindowIsFullscreen ? '0' : '16px'
+          }"
+        >
+          <!-- TODO: move traffic lights to drag container (decompose) -->
+          <div class="traffic-lights">
+            <button
+              class="traffic-light traffic-light-close"
+              @click="showObjWindow = false"
+            ></button>
+            <button
+              class="traffic-light traffic-light-minimize"
+              @click="handleResizeDragWindow('min')"
+            ></button>
+            <button
+              class="traffic-light traffic-light-maximize"
+              @click="handleResizeDragWindow('max')"
+            ></button>
+          </div>
+
+          <DavidHead @loadComplete="handleLoadComplete" />
+        </div>
+      </DragContainer>
+
+      <DragContainer
+        v-show="showGame2Window"
+        id="game-2-container"
+        :initial-x="dragContainerX"
+        :initial-y="dragContainerY"
+        :max-width="dragContainerMaxWidth"
+        :max-height="dragContainerMaxHeight"
+      >
+        <div
+          class="drag-window glass-wrapper object-viewer"
+          :style="{
+            width: `${dragWindowWidth}`,
+            height: `${dragWindowHeight}`,
+            maxHeight: `${dragContainerMaxHeight}`,
+            maxWidth: `${dragContainerMaxWidth}`,
+            borderRadius: dragWindowIsFullscreen ? '0' : '16px'
+          }"
+        >
+          <!-- TODO: move traffic lights to drag container (decompose) -->
+          <div class="traffic-lights">
+            <button
+              class="traffic-light traffic-light-close"
+              @click="showGame2Window = false"
+            ></button>
+            <button
+              class="traffic-light traffic-light-minimize"
+              @click="handleResizeDragWindow('min')"
+            ></button>
+            <button
+              class="traffic-light traffic-light-maximize"
+              @click="handleResizeDragWindow('max')"
+            ></button>
+          </div>
+
+          <iframe
+            id="tapocheck-top-down"
+            title="Betha test"
+            width="100%"
+            height="100%"
+            src="http://localhost:5173"
+          ></iframe>
+        </div>
+      </DragContainer>
+
+      <DragContainer
+        v-show="showObjWindow"
+        id="game-container"
+        :initial-x="dragContainerX"
+        :initial-y="dragContainerY"
+        :max-width="dragContainerMaxWidth"
+        :max-height="dragContainerMaxHeight"
+      >
+        <div
+          class="drag-window glass-wrapper object-view"
+          :style="{
+            width: `${dragWindowWidth}`,
+            height: `${dragWindowHeight}`,
+            maxHeight: `${dragContainerMaxHeight}`,
+            maxWidth: `${dragContainerMaxWidth}`,
+            borderRadius: dragWindowIsFullscreen ? '0' : '16px'
+          }"
+        >
+          <!-- TODO: move traffic lights to drag container (decompose) -->
+          <div class="traffic-lights">
+            <button
+              class="traffic-light traffic-light-close"
+              @click="showObjWindow = false"
+            ></button>
+            <button
+              class="traffic-light traffic-light-minimize"
+              @click="handleResizeDragWindow('min')"
+            ></button>
+            <button
+              class="traffic-light traffic-light-maximize"
+              @click="handleResizeDragWindow('max')"
+            ></button>
+          </div>
+
+          <iframe
+            id="plasta"
+            title="Betha test"
+            width="100%"
+            height="100%"
+            src="https://fulliam.github.io/plasta"
+          >
+          </iframe>
         </div>
       </DragContainer>
     </section>
     <section id="section2">
-      <About />
+      <!-- <About /> -->
+      <!-- <DavidHead /> -->
+      <!-- <DavidHead @loadComplete="handleLoadComplete" /> -->
+      <!-- <img src="/public/images/img.png" alt="fulliam" width="300px" height="300px" /> -->
     </section>
-    <section id="section3">
-      <DavidHead />
-
-      <article style="text-align: center; color: #fff; font-size: 20px; margin-bottom: 6%; padding-right: 50px; padding-left: 50px;">
-        <h2>
+  </div>
+  <section id="section3">
+    <article style="text-align: center; color: #fff; font-size: 20px; margin-bottom: 6%; padding-right: 50px; padding-left: 50px;">
+      <!-- <h2>
           H. Rackham
         </h2>
         <p>
           "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
-        </p>
-      </article>
-    </section>
-    <section id="section4">
-      <RotateCarousel />
-    </section>
-  </div>
+        </p> -->
+    </article>
+  </section>
+  <section id="section4">
+    <!-- <RotateCarousel /> -->
+  </section>
 </template>
 
 <script setup lang="ts">
 import ChangeFontAndImage from '@/components/UI/AnimatedText/ChangeFontAndImage.vue';
 import NavMenu from '@/components/partials/NavMenu/NavMenu.vue';
-import About from '@/components/templates/About.vue';
-// import Calendar from '@/components/templates/Calendar.vue';
+// import About from '@/components/templates/About.vue';
+import Calendar from '@/components/templates/Calendar.vue';
 import DavidHead from '@/components/partials/3D/DavidHead.vue';
 import MusicSpectogramm from '@/components/partials/MusicWidget/MusicSpectrogramm.vue';
 import RotateCarousel from '@/components/partials/Carousel/RotateCarousel.vue';
 import DragContainer from '@/components/partials/Drag/DragContainer.vue';
 import CodeHighlighter from '@/components/UI/AnimatedText/CodeHighLighter.vue';
-import ColorPicker from '@/components/partials/ThemeColorSettings/ColorPicker.vue';
-import gsap from 'gsap';
-import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
+// import ColorPicker from '@/components/partials/ThemeColorSettings/ColorPicker.vue';
+import ColorPicker from '@/components/partials/ThemeColorSettings/ColorPicker/index.vue';
+// import gsap from 'gsap';
+// import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
 
-gsap.registerPlugin(ScrollToPlugin);
-
+// gsap.registerPlugin(ScrollToPlugin);
 const showMusic = ref<boolean>(false);
 const showCode = ref<boolean>(false);
 const showCalendar = ref<boolean>(false);
 const showDragWindow = ref<boolean>(false);
+const showGameWindow = ref<boolean>(false);
+const showObjWindow = ref<boolean>(false);
+const showGame2Window = ref<boolean>(false);
 
 let lastClickTime = 0;
 const debounceTime = 500; // animation speed in scss
 let currentTime = Date.now();
 
+// TODO: update this logic && rechange index
 const handleChangeAction = (index: number) => {
   currentTime = Date.now();
 
@@ -139,8 +320,18 @@ const handleChangeAction = (index: number) => {
       showCalendar.value = !showCalendar.value;
     }
     if (index === 4) {
-      // any
+      lastClickTime = Date.now();
+      showGameWindow.value = !showGameWindow.value;
     }
+    if (index === 5) {
+      lastClickTime = Date.now();
+      showObjWindow.value = !showObjWindow.value;
+    }
+    if (index === 6) {
+      lastClickTime = Date.now();
+      showGame2Window.value = !showGame2Window.value;
+    }
+    // addd line && index if u need
   }
 };
 
@@ -175,6 +366,12 @@ const handleResizeDragWindow = (param: string) => {
   }
 };
 
+const objLoading = ref<boolean>(true);
+const handleLoadComplete = (value: boolean) => {
+  objLoading.value = value;
+  console.log('ODJ', value);
+};
+
 const samplePythonCode = `
 import asyncio
 
@@ -197,42 +394,42 @@ if __name__ == "__main__":
     asyncio.run(joke_teller.main())
 `;
 
-const sections = ref([]);
-const currentSectionIndex = ref(0);
+// const sections = ref([]);
+// const currentSectionIndex = ref(0);
 
-const handleWheel = (event) => {
-  event.preventDefault();
-  if (event.deltaY < 0 && currentSectionIndex.value > 0) {
-    // Scroll up
-    currentSectionIndex.value--;
-    scrollToSection(sections.value[currentSectionIndex.value], 'up');
-  } else if (event.deltaY > 0 && currentSectionIndex.value < sections.value.length - 1) {
-    // Scroll down
-    currentSectionIndex.value++;
-    scrollToSection(sections.value[currentSectionIndex.value], 'down');
-  }
-};
+// const handleWheel = (event) => {
+//   event.preventDefault();
+//   if (event.deltaY < 0 && currentSectionIndex.value > 0) {
+//     // Scroll up
+//     currentSectionIndex.value--;
+//     scrollToSection(sections.value[currentSectionIndex.value], 'up');
+//   } else if (event.deltaY > 0 && currentSectionIndex.value < sections.value.length - 1) {
+//     // Scroll down
+//     currentSectionIndex.value++;
+//     scrollToSection(sections.value[currentSectionIndex.value], 'down');
+//   }
+// };
 
-const scrollToSection = (section, direction) => {
-  if (section) {
-    const yOffset = direction === 'up' ? -window.innerHeight : 0;
-    gsap.to(window, { scrollTo: { y: section.offsetTop + yOffset, autoKill: false }, duration: 1 });
-  }
-};
+// const scrollToSection = (section, direction) => {
+//   if (section) {
+//     const yOffset = direction === 'up' ? -window.innerHeight : 0;
+//     gsap.to(window, { scrollTo: { y: section.offsetTop + yOffset, autoKill: false }, duration: 1 });
+//   }
+// };
 
-onMounted(() => {
-  sections.value = [
-    document.getElementById('section1'),
-    document.getElementById('section2'),
-    document.getElementById('section3'),
-    document.getElementById('section4')
-  ];
-  window.addEventListener('wheel', handleWheel);
-});
+// onMounted(() => {
+//   sections.value = [
+//     document.getElementById('section1'),
+//     document.getElementById('section2'),
+//     document.getElementById('section3'),
+//     document.getElementById('section4')
+//   ];
+//   window.addEventListener('wheel', handleWheel);
+// });
 
-onUnmounted(() => {
-  window.removeEventListener('wheel', handleWheel);
-});
+// onUnmounted(() => {
+//   window.removeEventListener('wheel', handleWheel);
+// });
 </script>
 
 <style scoped lang="scss">
@@ -283,7 +480,64 @@ section {
 
 .glass-wrapper {
   padding: 15px;
-  background-color: var(--section-bg-color);;
+  background-color: var(--section-bg-color);
+  background-image: var(--section-bg-color);
+}
+
+.object-view {
+  min-width: 600px !important;
+  max-width: 600px !important;
+  min-height: 500px !important;
+  width: 600px !important;
+  height: 500px !important;
+
+  canvas {
+    height: 100%;
+    width: 100%;;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 540px;
+    min-width: 540px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+  }
+}
+
+.object-viewer{
+  min-width: 1200px;
+  min-height: 600px;
+
+  canvas {
+    height: 100%;
+    width: 100%;;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 540px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+  }
+}
+
+.game-viewer {
+  min-width: 900px;
+  min-height: 400px;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+  }
 }
 
 .music-widget {
@@ -302,6 +556,12 @@ section {
     flex-direction: row;
     align-items: center;
   }
+}
+
+.carousel {
+  position: absolute;
+  left: -150px;
+  top: 300px;
 }
 
 .earphones {

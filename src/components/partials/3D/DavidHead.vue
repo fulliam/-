@@ -1,18 +1,20 @@
 <template>
-  <div ref="container"></div>
+  <div ref="container" class="obj-viewer"></div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+// Define the event emitter
+const emit = defineEmits(['loadComplete']);
+
 const container = ref<HTMLElement | null>(null);
 
-onMounted(() => {
+onMounted(async () => {
   const scene = new THREE.Scene();
-  let davidMind: THREE.Object3D;
-  let davidHead: THREE.Object3D;
+  let davidMind: THREE.Object3D | null = null;
+  let davidHead: THREE.Object3D | null = null;
   let isDavidMindVisible = true;
 
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -36,88 +38,115 @@ onMounted(() => {
 
   const loader = new GLTFLoader().setPath('/3D/');
 
-  // Функция для загрузки модели
-  function loadModel(name: string, position: THREE.Vector3, scale: THREE.Vector3, callback: (model: THREE.Object3D) => void) {
-    loader.load(
-      name,
-      (gltf) => {
-        const model = gltf.scene;
-        model.position.set(position.x, position.y, position.z);
-        model.scale.set(scale.x, scale.y, scale.z);
-        callback(model);
-        const geometry = (model.children[0] as THREE.Mesh).geometry;
-        geometry.center();
-      },
-      undefined,
-      (error) => {
-        console.error('An error happened', error);
-      }
-    );
+  // Function to load a model asynchronously
+  async function loadModel(name: string, position: THREE.Vector3, scale: THREE.Vector3): Promise<THREE.Object3D> {
+    return new Promise((resolve, reject) => {
+      loader.load(
+        name,
+        (gltf) => {
+          const model = gltf.scene;
+          model.position.set(position.x, position.y, position.z);
+          model.scale.set(scale.x, scale.y, scale.z);
+          const geometry = (model.children[0] as THREE.Mesh).geometry;
+          geometry.center();
+          resolve(model);
+        },
+        undefined,
+        (error) => {
+          console.error('An error happened', error);
+          reject(error);
+        }
+      );
+    });
   }
 
-  // Установите одинаковые начальные позиции и масштабы для обоих объектов
+  // Initial positions and scales for both objects
   const initialPosition = new THREE.Vector3(0, 1.7, 0);
   const scale = new THREE.Vector3(0.01, 0.012, 0.01);
 
-  loadModel('DavidMind.glb', initialPosition, scale, (model) => {
-    davidMind = model;
-    scene.add(davidMind);
+  const resizeObserver = new ResizeObserver(() => {
+    if (container.value) {
+      renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+      camera.aspect = container.value.clientWidth / container.value.clientHeight;
+      camera.updateProjectionMatrix();
+    }
   });
+  resizeObserver.observe(container.value);
 
-  loadModel('DavidHead.glb', initialPosition, scale, (model) => {
-    davidHead = model;
-  // Не добавляйте davidHead в сцену сразу
-  });
+  try {
+    // Load models asynchronously
+    [davidMind, davidHead] = await Promise.all([
+      loadModel('DavidMind.glb', initialPosition, scale),
+      loadModel('DavidHead.glb', initialPosition, scale)
+    ]);
 
-  const blue = new THREE.Color('rgba(0, 255, 255, 0.5)');
-  const purple = new THREE.Color('rgba(255, 0, 255, 0.5)');
+    // Add the first model to the scene
+    scene.add(davidMind!);
 
-  let factor = 1;
-  let dir = 0.01;
+    // Emit an event indicating that the models are loaded and rendered
+    emit('loadComplete', true);
 
-  function lerpColor(color1: THREE.Color, color2: THREE.Color, factor: number) {
-    const result = color1.clone().lerp(color2, factor);
-    return result;
-  }
+    const blue = new THREE.Color('rgba(0, 255, 255, 0.5)');
+    const purple = new THREE.Color('rgba(255, 0, 255, 0.5)');
 
-  // Измените функцию animate
-  const animate = () => {
-    requestAnimationFrame(animate);
+    let factor = 1;
+    let dir = 0.01;
 
-    if (davidMind && davidHead) {
-      if (isDavidMindVisible) {
-        davidMind.rotation.y += 0.06;
-        if (davidMind.rotation.y >= Math.PI * 2.8) {
-          davidMind.rotation.y = 0;
-          scene.remove(davidMind);
-          scene.add(davidHead);
-          isDavidMindVisible = false;
-        }
-      } else {
-        davidHead.rotation.y += 0.06;
-        if (davidHead.rotation.y >= Math.PI * 2.52) {
-          davidHead.rotation.y = -2.28;
-          scene.remove(davidHead);
-          scene.add(davidMind);
-          isDavidMindVisible = true;
-        }
-      }
+    function lerpColor(color1: THREE.Color, color2: THREE.Color, factor: number) {
+      return color1.clone().lerp(color2, factor);
     }
 
-    if (factor <= 0 || factor >= 1) dir *= -1;
-    factor += dir;
+    const animate = () => {
+      requestAnimationFrame(animate);
 
-    directionalLight.color = lerpColor(blue, purple, factor);
-    renderer.render(scene, camera);
-  };
+      if (davidMind && davidHead) {
+        if (isDavidMindVisible) {
+          davidMind.rotation.y += 0.06;
+          if (davidMind.rotation.y >= Math.PI * 2.8) {
+            davidMind.rotation.y = 0;
+            scene.remove(davidMind);
+            scene.add(davidHead);
+            isDavidMindVisible = false;
+          }
+        } else {
+          davidHead.rotation.y += 0.06;
+          if (davidHead.rotation.y >= Math.PI * 2.52) {
+            davidHead.rotation.y = -2.28;
+            scene.remove(davidHead);
+            scene.add(davidMind);
+            isDavidMindVisible = true;
+          }
+        }
+      }
 
-  animate();
+      if (factor <= 0 || factor >= 1) dir *= -1;
+      factor += dir;
+
+      directionalLight.color = lerpColor(blue, purple, factor);
+      renderer.render(scene, camera);
+    };
+
+    animate();
+  } catch (error) {
+    console.error('Error loading models:', error);
+    emit('loadComplete', false);
+  }
 });
+
 </script>
 
-<style scoped lang="scss">
-div {
-    width: 100%;
-    height: 100%;
-};
+<style lang="scss">
+.obj-viewer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  canvas {
+    height: 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    scale: 2;
+    margin-top: 200px;
+  }
+}
 </style>

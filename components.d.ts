@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     PartialsMusicWidgetMusicSpectrogramm: typeof import('./src/components/partials/MusicWidget/MusicSpectrogramm.vue')['default']
     PartialsNavMenuNavMenu: typeof import('./src/components/partials/NavMenu/NavMenu.vue')['default']
     PartialsThemeColorSettingsColorPicker: typeof import('./src/components/partials/ThemeColorSettings/ColorPicker.vue')['default']
+    PartialsThemeColorSettingsColorPickerInddex: typeof import('./src/components/partials/ThemeColorSettings/ColorPicker/inddex.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TemplatesAbout: typeof import('./src/components/templates/About.vue')['default']

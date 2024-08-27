@@ -93,18 +93,22 @@ const images = ref<string[]>([
   -o-animation: rotating 20s linear infinite;
   -ms-animation: rotating 20s linear infinite;
   animation: rotating 20s linear infinite;
-  &:hover {
-  animation-play-state:paused;
-  -o-animation-play-state:paused;
-  -moz-animation-play-state:paused;
-	-webkit-animation-play-state:paused;
-}
+
+  // &:hover {
+  //   animation-play-state:paused;
+  //   -o-animation-play-state:paused;
+  //   -moz-animation-play-state:paused;
+  //   -webkit-animation-play-state:paused;
+  // }
+
   div {
     display: block;
     position: absolute;
     width: 180px;
     height: 120px;
     border: 2px solid #000;
+    border-radius: 8px;
+
     img {
       width:100%;
       height:100%;
